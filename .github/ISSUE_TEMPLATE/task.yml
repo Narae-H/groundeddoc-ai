@@ -1,0 +1,68 @@
+name: 🛠️ Task
+description: A unit of development work to track and complete
+title: "task: <short summary>"
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is this task and why is it needed?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the app does this touch?
+      options:
+        - AI / citations
+        - UI / frontend
+        - Data (Supabase, storage, auth)
+        - Docs
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: input
+    id: branch
+    attributes:
+      label: Related branch
+      description: Branch naming — `feature/<issue-number>-<short-description>`
+      placeholder: feature/123-add-citation-rendering
+    validations:
+      required: false
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related issues
+      description: Link any related issues (optional).
+      value: |
+        - Relates to #
+        - Depends on #
+    validations:
+      required: false
+
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Break the work into checklist items.
+      value: |
+        - [ ] Task 1
+        - [ ] Task 2
+        - [ ] Task 3
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: definition-of-done
+    attributes:
+      label: Definition of done
+      options:
+        - label: Development completed
+        - label: "`npm run lint` and type check pass"
+        - label: Self-reviewed the diff
+        - label: Merged to main

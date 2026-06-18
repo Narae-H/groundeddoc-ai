@@ -1,0 +1,30 @@
+# Label definitions, synced to GitHub by .github/workflows/labels.yml.
+# Colours are 6-digit hex without the leading '#'.
+
+# --- Type ---
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to docs
+- name: task
+  color: c5def5
+  description: A unit of development work to track
+- name: chore
+  color: ededed
+  description: Routine maintenance
+
+# --- Area ---
+- name: "area: ai"
+  color: 5319e7
+  description: AI orchestration, Claude, citations
+- name: "area: ui"
+  color: 1d76db
+  description: Frontend and UI
+- name: "area: data"
+  color: 0e8a16
+  description: Supabase, storage, auth
