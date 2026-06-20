@@ -39,6 +39,9 @@ yarn-error.log*
 # claude code (keep shared settings.json; ignore personal overrides)
 .claude/settings.local.json
 
+# scratch workspace for long AI responses / temporary notes — never committed
+/~temp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
