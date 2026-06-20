@@ -10,7 +10,7 @@ Entry point for the **fix flow** (bugs and small modifications to existing code)
 
 ## Workflow
 
-1. **Branch check** — if on `main`, create a `fix/<short-name>` branch first.
+1. **Branch check** — if on `main`, create a `fix/…` branch off the issue number first (see [CONTRIBUTING.md → Branch naming](../../CONTRIBUTING.md#branch-naming) for the format).
 2. **Classify the work**
    - **Bug / erroring / unexpected behaviour** → delegate to `61-debugger`: reproduce, isolate the root cause with evidence, apply the minimal fix. No fix without an understood cause.
    - **Small change (not a bug)** → delegate to `31-developer` for a targeted edit following project conventions.
@@ -23,6 +23,7 @@ Entry point for the **fix flow** (bugs and small modifications to existing code)
 - For bugs, identify the root cause before editing — don't patch symptoms.
 - Keep the change minimal and scoped; resist unrelated refactoring.
 - If the "small change" turns out to need new tables/routes/real planning, stop and switch to `/nn-flow-plan`.
+- If scope drifts from the tracking issue, flag it and recommend the human update it before continuing — don't edit the issue yourself (issues are human-owned; see [AGENTS.md](../../AGENTS.md)).
 
 ## DO NOT
 

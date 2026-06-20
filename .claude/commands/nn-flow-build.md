@@ -10,7 +10,7 @@ Phase 2 of the feature pipeline. Implements the planned change following project
 
 ## Workflow
 
-1. **Branch check** — if on `main`, create a `feature/<short-name>` branch first.
+1. **Branch check** — if on `main`, create a `feature/…` branch off the issue number first (see [CONTRIBUTING.md → Branch naming](../../CONTRIBUTING.md#branch-naming) for the format).
 2. **Prepare (only if it's a new area)**
    - Need a route/page contract? Delegate to `21-page-spec`.
    - Need module boilerplate? Delegate to `91-scaffolder`.
@@ -23,6 +23,7 @@ Phase 2 of the feature pipeline. Implements the planned change following project
 
 - Don't call the Anthropic API with raw `fetch`; use the AI SDK.
 - Keep changes scoped to the planned work; flag anything that grew.
+- If scope drifts from the tracking issue, flag it and recommend the human update it before continuing — don't edit the issue yourself (issues are human-owned; see [AGENTS.md](../../AGENTS.md)).
 
 ## DO NOT
 

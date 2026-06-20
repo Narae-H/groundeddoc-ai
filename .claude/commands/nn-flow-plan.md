@@ -19,6 +19,7 @@ Phase 1 of the feature pipeline. Produces an implementation brief; writes no cod
 
 - No application code in this phase.
 - Don't proceed to build while requirements are ambiguous — resolve open decisions first.
+- The work should be tracked by a GitHub issue; if none exists yet, recommend the human open one and map the brief to it — don't create the issue yourself (issues are human-owned; see [AGENTS.md](../../AGENTS.md)).
 
 ## DO NOT
 

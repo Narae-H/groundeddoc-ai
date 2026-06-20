@@ -29,7 +29,7 @@ body:
     id: branch
     attributes:
       label: Related branch
-      description: Branch naming — `feature/<issue-number>-<short-description>`
+      description: "Branch naming — `<type>/<issue-number>-<short-description>` (`feature/…` or `fix/…`); see CONTRIBUTING.md → Branch naming"
       placeholder: feature/123-add-citation-rendering
     validations:
       required: false

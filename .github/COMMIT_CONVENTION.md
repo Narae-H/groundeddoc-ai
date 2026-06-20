@@ -42,5 +42,5 @@ chore(deps): bump next to 16.2.9
 
 ## Branch strategy
 
-- **main** — production-ready
-- **feature/<short-name>** — feature work; open a PR to `main` when done
+- **main** — production-ready.
+- Feature/fix branches are named from the tracking issue number — see **[CONTRIBUTING.md → Branch naming](../CONTRIBUTING.md#branch-naming)** for the format. The full issue-driven workflow lives in [CONTRIBUTING.md](../CONTRIBUTING.md).
