@@ -55,7 +55,7 @@ organization (tenant; DEMO_ORG_ID)
             └─ messages   question/answer turns + citations
 ```
 
-Routes are **not created in issue #8** — confirmed here, built under the folder architecture (#4):
+Routes are **not created in issue #8** — confirmed here; folder layout per #9 (folder architecture), screens built in later tasks:
 
 | Screen | Route |
 | --- | --- |
@@ -67,14 +67,14 @@ Routes are **not created in issue #8** — confirmed here, built under the folde
 - **IDs** are short opaque ids (nanoid, ~10 chars) — e.g. `/projects/aB3xK9/c/7mP2qT`, not raw
   uuid PKs. `org_id` stays server-side (session / `DEMO_ORG_ID`) and is **never** in the URL.
 
-> **Schema impact — tracked in #5 (ADR) / #23 (data-architect), NOT done here.** The current
-> `supabase/schema.sql` is org-scoped: `documents` and `conversations` carry `org_id`, and a
-> conversation spans *all* org documents. This project-centric model adds a **`projects`** table
-> and re-scopes `documents` and `conversations` to `project_id` (org_id kept as the tenant
-> boundary), plus a short public id. The schema change and routes belong to #5 / #23 / #4.
+> **Schema impact — tracked in #16, NOT done here.** The current `supabase/schema.sql` is
+> org-scoped: `documents` and `conversations` carry `org_id`, and a conversation spans *all*
+> org documents. This project-centric model adds a **`projects`** table and re-scopes
+> `documents` and `conversations` to `project_id` (org_id kept as the tenant boundary), plus a
+> short public id. That schema change is #16; the folder layout is #9.
 
 ## Out of scope for issue #8
 
 - Hand-building React components or real routes — later stub-screen tasks.
-- The `projects` schema change and project-scoping — #5 / #23 (see the note above).
+- The `projects` schema change and project-scoping — #16 (see the note above).
 - Editing the canonical root `DESIGN.md`.
