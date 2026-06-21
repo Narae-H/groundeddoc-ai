@@ -14,3 +14,7 @@ Every change is tracked by a GitHub issue — that issue, not the code or commit
 - Drive development with the `nn-flow-*` commands **in order**. Run `/nn-flow-help` to see the flow and the next command for where you are.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow.
+
+# Tech-stack decisions are recorded as an ADR
+
+The tech-stack choices and their one-line rationale live in [docs/DECISIONS.md](docs/DECISIONS.md) — consult it before re-opening a settled decision (DB, AI SDK, RLS-off stance, input formats, non-streaming responses, the design pipeline). If a decision changes, record it there first.
