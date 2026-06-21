@@ -27,8 +27,9 @@
 - **Where:** in [Claude Design](https://claude.ai/design) — open your project list and find the
   project named **"GroundedDoc"**. The direct project URL/ID is intentionally **not** committed
   (this repo is public); look it up by name instead.
-- **Screens in the prototype:** `Sign in` and `GroundedDoc Chat` (app top bar, upload modal,
-  share modal, create-project modal). Built from `NotionDesignSystem_*` components.
+- **Screens in the prototype:** `Login` and the **Project workspace** (e.g. "Riverside Tower —
+  Stage 2": left documents sidebar, centre chat with citations, "Chats" history, "Back to portal").
+  Includes upload, share, and create-project modals. Built from `NotionDesignSystem_*` components.
 
 ## Token set (from `/DESIGN.md`)
 
@@ -41,24 +42,39 @@
 | Radius | `rounded.*` | `xs` 4px → `full` 9999px |
 | Shadow | *(not in `/DESIGN.md`)* | getdesign omits shadows; the **Claude Design prototype** defines `--shadow-soft` / `--shadow-elevated`, now carried into `globals.css` from the prototype. |
 
-## Screen → route mapping (documentation only)
+## Domain model & routes (documentation only)
 
-The prototype has **two** screens. Routes are **not created in issue #8** — the final
-structure is settled under the folder architecture (issue #4):
+**The product is project-centric**, not a single chat. A *project* is a scope of documents; a
+*conversation* is a Q&A thread grounded in that project's documents. The hierarchy:
 
-| Prototype screen | Eventual route |
+```
+organization (tenant; DEMO_ORG_ID)
+  └─ project           a scope of documents — e.g. "Riverside Tower — Stage 2"
+       ├─ documents     uploaded files (reports / contracts / invoices / photos), project-scoped
+       └─ conversation  a Q&A thread over that project's documents ("Chats")
+            └─ messages   question/answer turns + citations
+```
+
+Routes are **not created in issue #8** — confirmed here, built under the folder architecture (#4):
+
+| Screen | Route |
 | --- | --- |
-| Login | (auth route — #4) |
-| Chat | `src/app/conversations/[conversationId]/` |
+| Login | `/login` |
+| Portal (project list) | `/` |
+| Project workspace (documents + chat) | `/projects/[projectId]` |
+| A specific conversation | `/projects/[projectId]/c/[conversationId]` |
 
-`[conversationId]` is `conversations.id` (a uuid). `org_id` stays server-side (from the
-session / `DEMO_ORG_ID`) and is **never** in the URL — a conversation already carries its
-`org_id`, and the address only needs to say *which conversation*.
+- **IDs** are short opaque ids (nanoid, ~10 chars) — e.g. `/projects/aB3xK9/c/7mP2qT`, not raw
+  uuid PKs. `org_id` stays server-side (session / `DEMO_ORG_ID`) and is **never** in the URL.
 
-**Deferred (not in the prototype):** a home/portal screen isn't needed now — login goes
-straight to chat. A documents/list screen, and whether a root `/` is kept, are decided in #4.
+> **Schema impact — tracked in #5 (ADR) / #23 (data-architect), NOT done here.** The current
+> `supabase/schema.sql` is org-scoped: `documents` and `conversations` carry `org_id`, and a
+> conversation spans *all* org documents. This project-centric model adds a **`projects`** table
+> and re-scopes `documents` and `conversations` to `project_id` (org_id kept as the tenant
+> boundary), plus a short public id. The schema change and routes belong to #5 / #23 / #4.
 
 ## Out of scope for issue #8
 
 - Hand-building React components or real routes — later stub-screen tasks.
+- The `projects` schema change and project-scoping — #5 / #23 (see the note above).
 - Editing the canonical root `DESIGN.md`.
