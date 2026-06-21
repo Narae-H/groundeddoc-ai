@@ -39,6 +39,8 @@ yarn-error.log*
 
 # claude code (keep shared settings.json; ignore personal overrides)
 .claude/settings.local.json
+# subagent scratch memory — tooling artifacts, not project files
+.claude/agent-memory/
 
 # scratch workspace for long AI responses / temporary notes — never committed
 /~temp/

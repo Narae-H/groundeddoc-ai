@@ -4,6 +4,10 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
+# Folder structure & conventions
+
+The codebase's folder layout, server/client split, import-direction rule, and component conventions are documented in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Read it before adding routes, components, or modules.
+
 # GitHub issues are the source of truth
 
 Every change is tracked by a GitHub issue — that issue, not the code or commit messages, is the canonical record of scope and decisions.
