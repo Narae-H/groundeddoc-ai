@@ -43,14 +43,17 @@
 
 ## Screen → route mapping (documentation only)
 
-Routes are **not created in issue #8** — built later under the folder architecture (issue #4):
+The prototype has **two** screens. Routes are **not created in issue #8** — the final
+structure is settled under the folder architecture (issue #4):
 
 | Prototype screen | Eventual route |
 | --- | --- |
-| Home | `src/app/page.tsx` |
-| Documents (list) | `src/app/documents/` |
+| Login | (auth route — #4) |
 | Chat | `src/app/c/[id]/` |
-| Sign in | (auth route — TBD with #4) |
+
+**Deferred (not in the prototype):** a home/portal screen isn't needed now — login goes
+straight to chat. A documents/list screen, and the final route structure (incl. what
+`[id]` binds to and whether `/` is kept), are decided in #4.
 
 ## Out of scope for issue #8
 
