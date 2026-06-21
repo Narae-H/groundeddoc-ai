@@ -9,7 +9,7 @@ Every unit of work is tracked by a **GitHub issue**. The issue — not a commit 
 - **Start from an issue.** Before writing code, there should be an issue describing the work (use the [Task template](.github/ISSUE_TEMPLATE/task.yml)).
 - **Keep the issue current.** If scope or details change while you're developing — even a minor adjustment — **update the issue first, then write the code.** This keeps the issue trackable after the fact and avoids the "source of truth is in three places" problem.
 - **Check off tasks** in the issue's checklist as you complete them.
-- **Issues are human-owned.** Because the issue is the source of truth, a human writes and reviews it — AI agents do not create or edit issues. An agent may *advise* (suggest wording, surface scope drift), but the human makes the change.
+- **Issues require explicit human approval before an agent creates or edits them.** Because the issue is the source of truth, an agent may draft issue bodies (title, description, tasks, scope changes) and propose them for review — but only after the human explicitly approves the proposed content may the agent run `gh issue create` / `gh issue edit`. Silence is not approval. Mid-development scope drift goes through the same loop: draft the update, get sign-off, apply.
 
 ## Workflow
 
