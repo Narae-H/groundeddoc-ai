@@ -15,6 +15,7 @@ The single source of truth for the tech-stack choices, so later issues never re-
 | 5 | **Responses = non-streaming (verify-then-return)** | Zone 3's deterministic gate must verify every citation against the source *before* the user sees the answer — incompatible with streaming tokens. |
 | 6 | **Single seeded org = `DEMO_ORG_ID`** | Fixed org `00000000-0000-0000-0000-000000000001` (seeded in `schema.sql`); `org_id` stays an expression of intent until multi-tenancy lands. |
 | 7 | **Design source = Notion → getdesign → Claude Design → tokens in `globals.css`; components hand-built; no Tailwind; styling = CSS Modules** | One design origin, synced — not redrawn by hand. See [Design pipeline](#design-pipeline) below. |
+| 8 | **Data model = project-centric** (schema: [`../supabase/schema.sql`](../supabase/schema.sql)) | `documents`/`conversations` re-scoped from org → project (a project is a scope of docs within an org); `org_id` kept as the denormalised tenant column; URL-facing entities (`projects`, `conversations`) carry a short opaque `public_id` (app-side nanoid). |
 
 † **Provisional — may still change.** Decisions 3 and 4 are not yet locked; they capture the current direction, not a settled choice.
 
