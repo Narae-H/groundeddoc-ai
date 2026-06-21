@@ -7,7 +7,7 @@ How the codebase is organised: where code goes and the structural rules that kee
 This document is the detailed expansion of the structure conventions summarised in [`.claude/skills/architecture/SKILL.md`](../.claude/skills/architecture/SKILL.md). It covers the folder layout, the server/client split, the layers and request flow, the one-way import rule, component conventions, and the boundaries we hold.
 
 - For **top-level project rules** (Next.js version warnings, the GitHub-issues-as-source-of-truth workflow), defer to [`AGENTS.md`](../AGENTS.md).
-- For the **rationale** behind these structural decisions — *why* we split the data layer in two, *why* there is no `components/features` bucket, *why* no DTO/mapper layering — see [`docs/DECISIONS.md`](DECISIONS.md). (That document is tracked by a follow-up issue and does not exist yet; this link is the agreed home for it.)
+- For the **rationale** behind these structural decisions — *why* we split the data layer in two, *why* there is no `components/features` bucket, *why* no DTO/mapper layering — see [`docs/DECISIONS.md`](DECISIONS.md).
 - For the **AI data flow** — the upload and query flows and the trust zones that cage the model — see [`docs/DATA_FLOW.md`](DATA_FLOW.md).
 
 This doc describes structure, not rationale and not data flow. Cross-link to those documents rather than duplicating them.
@@ -98,6 +98,6 @@ Stated precisely:
 - UI, data access, and AI orchestration live in **distinct modules** — they are not tangled together in one file.
 - The **Anthropic key** and the **Supabase service-role key** never reach client code; they stay server-side.
 - **Access scoping is enforced in `lib/data`** — every tenant-scoped query filters by `org_id`. Tenant isolation is a data-layer property, not a prompt instruction; the AI grounds only on documents the fetch returned (see [`docs/DATA_FLOW.md`](DATA_FLOW.md)).
-  - **Role-based document visibility — planned, not yet implemented.** On top of `org_id`, document reads will additionally gate by the caller's role (intended: two tiers — visible to all members, or restricted to managers), with the role resolved from a server-side session (a demo persona switcher now, real auth later) and never trusted from the client. Until that RBAC work lands, `lib/data` enforces `org_id` scoping only; the full model (roles, the all-members/managers-only gate, persona resolution) will be specified with it.
+  - **Role-based document visibility — planned, not yet implemented.** On top of `org_id`, document reads will additionally gate by the caller's role (intended: two tiers — visible to all members, or restricted to managers), with the role resolved from a server-side session (a demo persona switcher now, real auth later) and never trusted from the client. Until that RBAC work lands, `lib/data` enforces `org_id` scoping only; the full model (roles, the all-members/managers-only gate, persona resolution) will be specified with it. The rationale is recorded in [`docs/DECISIONS.md`](DECISIONS.md) (the `org_id` + role scoping decision).
 
 **Non-goal:** no DTO / mapper / service / model layering at this stage. The data layer is `lib/data` (typed functions) plus `types` (generated DB types) — that combination covers what those extra layers would, without the ceremony.
