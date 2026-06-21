@@ -51,6 +51,12 @@ Using AI tooling end to end is itself part of the demonstration: shipping a work
 | Storage | Supabase Storage | — | Stores the original uploaded files. |
 | Deploy | Vercel | — | Live demo link plus CI/CD. |
 
+## 🔐 Environment
+
+Copy [`.env.local.example`](.env.local.example) to `.env.local` at the project root and fill in real values for Supabase and Anthropic. The app validates env vars at boot via `src/lib/env.ts` (client) and `src/lib/env.server.ts` (server) — if anything is missing or invalid, boot fails fast with a list of offending variables.
+
+`.env.local` itself stays out of git (see `.gitignore`). For deployment, set the same variables in **Vercel → Project Settings → Environment Variables**. For CI (GitHub Actions), add them as repo or organisation **secrets** under the same names.
+
 ## 🛠️ Getting started
 
 Run the development server:
