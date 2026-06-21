@@ -19,7 +19,7 @@ Within `2x` the units digit is the design lane: `1` page/route contract, `2` com
 | [`21-page-spec`](21-page-spec.md) | Page/route contract design — author/refine the GitHub issue body before scaffolding (no implementation) |
 | [`22-architect-reviewer`](22-architect-reviewer.md) | Component architecture, module boundary integrity, long-term maintainability |
 | [`23-data-architect`](23-data-architect.md) | Supabase/Postgres ownership — schema, RLS policies, migration safety, indexing |
-| [`25-style-curator`](25-style-curator.md) | Style layer ownership — `globals.css`, design tokens, brand colour policy |
+| [`25-style-curator`](25-style-curator.md) | Style layer ownership — `globals.css`, design tokens sourced from Notion `design.md`, CSS Modules, no Tailwind |
 
 ## 3x — Implement
 

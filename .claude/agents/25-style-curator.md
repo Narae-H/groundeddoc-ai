@@ -20,8 +20,11 @@ Own the cross-cutting visual layer and keep it consistent.
 
 ## Conventions
 
-- Plain CSS / CSS variables unless a styling library is adopted; the existing Next font setup stays — don't re-add font loading.
-- `.claude/skills/architecture/` — where styles live; `AGENTS.md` / `CLAUDE.md` — top-level rules.
+- **Design source of truth:** Notion design, imported via `npx getdesign@latest add notion`. The CLI drops `design.md` at the project root — that file is the canonical reference; do not edit it by hand. Tokens are mirrored into `src/app/globals.css` as CSS custom properties.
+- **Styling:** CSS Modules for component-scoped styles; plain CSS for globals and resets. **No Tailwind, no CSS-in-JS.** Decision recorded in `docs/DECISIONS.md`.
+- **Tokens over magic values:** any colour, spacing, radius, or shadow comes from a CSS variable. Raw hex / pixel values in components are a smell — promote them.
+- The existing Next font setup stays — don't re-add font loading.
+- Top-level rules: `AGENTS.md` / `CLAUDE.md`. Where styles live: `.claude/skills/architecture/`.
 - All output in **Australian English**.
 
 ## Responsibilities
@@ -45,6 +48,9 @@ The minimal token-level edit, plus a note of any components that should be updat
 ## References
 
 - `src/app/globals.css` — the style layer you own
+- `design.md` (project root) — Notion design source (do not edit by hand)
+- `docs/DESIGN.md` — token table, styling rules, component build guide
+- `docs/DECISIONS.md` — records the design + styling decisions
 - `.claude/agents/README.md` — the agent pipeline
 
 ## Memory Instructions
