@@ -49,11 +49,14 @@ structure is settled under the folder architecture (issue #4):
 | Prototype screen | Eventual route |
 | --- | --- |
 | Login | (auth route — #4) |
-| Chat | `src/app/c/[id]/` |
+| Chat | `src/app/conversations/[conversationId]/` |
+
+`[conversationId]` is `conversations.id` (a uuid). `org_id` stays server-side (from the
+session / `DEMO_ORG_ID`) and is **never** in the URL — a conversation already carries its
+`org_id`, and the address only needs to say *which conversation*.
 
 **Deferred (not in the prototype):** a home/portal screen isn't needed now — login goes
-straight to chat. A documents/list screen, and the final route structure (incl. what
-`[id]` binds to and whether `/` is kept), are decided in #4.
+straight to chat. A documents/list screen, and whether a root `/` is kept, are decided in #4.
 
 ## Out of scope for issue #8
 
