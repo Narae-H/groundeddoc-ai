@@ -35,6 +35,7 @@ Turn a finished branch into a clean pull request.
    - **Screenshots** — prompt the user for them on UI changes (you can't capture them).
    - **Checklist** — tick only what's genuinely true.
 4. Create the PR with `gh pr create`, base `main`.
+5. Reconcile the tracking issue: compare the branch against its **Tasks** and **Definition of done**; draft ticked checkboxes (`[ ]`→`[x]`) and any scope-drift updates, get sign-off, then `gh issue edit` (per `AGENTS.md` — issues need approval). Leave *Merged to main* until merge.
 
 ## Output
 
