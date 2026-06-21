@@ -31,7 +31,7 @@ Colour denotes the trust zone — **grey = deterministic code**, **amber = the p
 
 ### Zone 1 — Deterministic (grey): permission ends here
 
-The step that *fetches* documents by `org_id` (`WHERE org_id`) is the entire security boundary. Once this step has selected only that org's documents and built the context, **the most the model can ever see is already fixed.** Leaking another org's document is therefore physically impossible *because this SQL never fetched it* — the guarantee comes from the data-fetching step, not the prompt.
+The step that *fetches* documents is the entire security boundary. `org_id` (`WHERE org_id`) is the tenant guard — it is what makes leaking another org's document physically impossible — and `project_id` narrows the grounding set to the project's documents *within* that org. Once this step has selected only that project's documents (under the org tenant boundary) and built the context, **the most the model can ever see is already fixed.** Leaking another org's document is therefore impossible *because this SQL never fetched it* — the guarantee comes from the data-fetching step, not the prompt.
 
 Wrapping each document in a `<document>` tag also happens here. It's a prompt-injection mitigation that pens the document text into a *data channel* so it can't blend into the instructions. (It's a mitigation, not a guarantee — the guarantee still comes from "you can't leak what was never fetched".)
 
@@ -68,7 +68,8 @@ Only on passing do we store and return it in `messages` as `grounded` + `citatio
 ## 4. How this maps to the schema
 
 - `documents.content` — Zone 1's context source and Zone 3's verification target.
-- `documents.org_id` — Zone 1's security boundary (in production, RLS enforces isolation on this column).
+- `documents.org_id` — Zone 1's tenant boundary (in production, RLS enforces isolation on this column).
+- `documents.project_id` — Zone 1's grounding scope: narrows the fetch to the project's documents *within* the org tenant boundary.
 - `documents.access_level` — the upload flow's secure-by-default (defaults to `org_private`).
 - `messages.grounded` / `messages.citations` — where Zone 2's output is stored without loss.
 

@@ -1,6 +1,6 @@
 ---
 name: supabase
-description: Supabase/Postgres conventions for GroundedDoc — the org-scoped data model, the deliberate prototype RLS stance, queries, storage, migrations. Consult when adding or changing tables, queries, buckets, or migrations.
+description: Supabase/Postgres conventions for GroundedDoc — the project-centric, org-tenant data model, the deliberate prototype RLS stance, queries, storage, migrations. Consult when adding or changing tables, queries, buckets, or migrations.
 ---
 
 # Supabase
@@ -9,9 +9,10 @@ Data-layer conventions. **The canonical schema lives in [`supabase/schema.sql`](
 
 ## The model (at a glance)
 
-- `organizations` — the tenant. `documents` · `conversations` · `messages` all carry `org_id`.
+- `organizations` — the tenant. `projects` · `documents` · `conversations` · `messages` all carry `org_id`.
+- **`projects`** — a scope of documents within an org. `documents` and `conversations` are **project-scoped** (each carries a `project_id`); `org_id` is kept as the denormalised tenant column. URL-facing entities (`projects`, `conversations`) carry a short opaque `public_id` — an ~10-char nanoid generated app-side — as the URL handle, while the uuid PK stays internal.
 - **`documents` is the access unit** — one document = one row = one `access_level` (upload unit = access unit). `content` (extracted text) lives in the DB so it's queryable and re-read cheaply on every question and used to verify citations; `storage_path` points to the original file in Storage.
-- **`conversations` are org-scoped, not document-scoped** (no `document_id`) — questions run across all of the org's documents, enabling cross-document answers.
+- **`conversations` are project-scoped, not document-scoped** (no `document_id`) — a conversation spans its project's documents, so cross-document answers run across the documents *within a project*.
 - `messages` store the AI's structured output directly: `grounded` (boolean, assistant turns only) and `citations` (jsonb array). `org_id` is denormalised onto messages so RLS stays a flat column check.
 
 ## Tenant boundary = `org_id` (not `auth.uid()`)
