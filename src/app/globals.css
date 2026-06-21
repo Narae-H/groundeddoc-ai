@@ -1,13 +1,114 @@
+/* ============================================================================
+   Design tokens — Notion design language
+   Source: /DESIGN.md (getdesign analysis) + the Claude Design prototype.
+   See docs/DESIGN.md for the full chain. Single home for tokens — no Tailwind;
+   components style via CSS Modules using these variables.
+   ============================================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ─── Type family ───
+     Inter substitutes the proprietary NotionInter; loaded via next/font in layout.tsx
+     (`--font-inter`). Negative display tracking below is applied explicitly. */
+  --font-sans: var(--font-inter), -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* ─── Brand & structural accent (the ONLY colour that paints an action) ─── */
+  --blue: #0075de;            /* Notion Blue — primary CTA, links, focus */
+  --blue-active: #005bab;     /* Pressed blue */
+  --indigo: #213183;          /* Deep indigo — the dark "night" hero band */
+
+  /* ─── Decorative sticker palette (illustrations & dots only, never CTAs) ─── */
+  --sticker-sky: #62aef0;
+  --sticker-purple: #d6b6f6;
+  --sticker-purple-deep: #391c57;
+  --sticker-pink: #ff64c8;
+  --sticker-orange: #dd5b00;
+  --sticker-orange-deep: #793400;
+  --sticker-teal: #2a9d99;
+  --sticker-green: #1aae39;
+  --sticker-brown: #523410;
+
+  /* ─── Surface ─── */
+  --canvas: #ffffff;          /* pure white — cards, fields, nav */
+  --canvas-soft: #f6f5f4;     /* warm paper — the signature page canvas */
+  --surface: #ffffff;
+  --hairline: #e6e6e6;        /* 1px borders & dividers */
+  --field-border: #dddddd;    /* input border */
+
+  /* ─── Ink (text) ─── */
+  --ink: #000000;             /* headings & body (render ~95% alpha) */
+  --ink-95: rgba(0, 0, 0, 0.95);
+  --ink-secondary: #31302e;   /* secondary body, footer */
+  --ink-muted: #615d59;       /* supporting / muted */
+  --ink-faint: #a39e98;       /* captions, metadata, placeholder */
+  --on-primary: #ffffff;      /* text on blue / indigo */
+
+  /* ─── Semantic aliases ─── */
+  --text-heading: var(--ink-95);
+  --text-body: var(--ink-secondary);
+  --text-muted: var(--ink-muted);
+  --text-faint: var(--ink-faint);
+  --text-link: var(--blue);
+  --surface-page: var(--canvas-soft);
+  --surface-card: var(--surface);
+  --border-card: var(--hairline);
+  --accent: var(--blue);
+  --accent-active: var(--blue-active);
+
+  /* ─── Type scale: size / weight / line-height / tracking ───
+     Tracking grows more negative with size — the core Notion move. */
+  --display-1-size: 64px;  --display-1-weight: 700;  --display-1-leading: 1.0;   --display-1-tracking: -2.125px;
+  --display-2-size: 54px;  --display-2-weight: 700;  --display-2-leading: 1.04;  --display-2-tracking: -1.875px;
+  --heading-1-size: 40px;  --heading-1-weight: 700;  --heading-1-leading: 1.1;   --heading-1-tracking: -1px;
+  --heading-2-size: 26px;  --heading-2-weight: 700;  --heading-2-leading: 1.23;  --heading-2-tracking: -0.625px;
+  --heading-3-size: 22px;  --heading-3-weight: 700;  --heading-3-leading: 1.27;  --heading-3-tracking: -0.25px;
+  --title-size: 20px;      --title-weight: 600;      --title-leading: 1.4;       --title-tracking: -0.125px;
+  --body-md-size: 16px;    --body-md-weight: 400;    --body-md-leading: 1.5;     --body-md-tracking: 0;
+  --body-sm-size: 15px;    --body-sm-weight: 400;    --body-sm-leading: 1.33;    --body-sm-tracking: 0;
+  --button-size: 16px;     --button-weight: 500;     --button-leading: 1.5;      --button-tracking: 0;
+  --caption-size: 14px;    --caption-weight: 400;    --caption-leading: 1.43;    --caption-tracking: 0;
+  --eyebrow-size: 12px;    --eyebrow-weight: 600;    --eyebrow-leading: 1.33;    --eyebrow-tracking: 0.125px;
+
+  /* ─── Spacing (8px base) ─── */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 28px;
+  --space-xxl: 32px;
+
+  /* ─── Border radius ─── */
+  --radius-xs: 4px;       /* form fields, inline chips */
+  --radius-sm: 5px;       /* menu items, list rows, status pills */
+  --radius-md: 8px;       /* utility / nav buttons, smaller cards */
+  --radius-lg: 12px;      /* feature cards, illustration frames */
+  --radius-xl: 16px;      /* large containers, image wells */
+  --radius-full: 9999px;  /* marketing pill CTAs, badges, circular buttons */
+
+  /* ─── Elevation: many near-transparent layers, never a hard cast ─── */
+  --shadow-soft:
+    rgba(0, 0, 0, 0.01) 0 0.175px 1.041px,
+    rgba(0, 0, 0, 0.02) 0 0.8px 2.925px,
+    rgba(0, 0, 0, 0.027) 0 2.025px 7.847px,
+    rgba(0, 0, 0, 0.04) 0 4px 18px;
+  --shadow-elevated:
+    rgba(0, 0, 0, 0.012) 0 0.5px 1.4px,
+    rgba(0, 0, 0, 0.018) 0 1.6px 4.5px,
+    rgba(0, 0, 0, 0.024) 0 4px 11px,
+    rgba(0, 0, 0, 0.035) 0 9px 24px,
+    rgba(0, 0, 0, 0.05) 0 23px 52px;
+
+  /* ─── Scaffold-compat aliases (so generic references still resolve) ─── */
+  --background: var(--surface-page);
+  --foreground: var(--text-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================================
+   Base
+   ============================================================================ */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -24,26 +125,14 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--text-body);
+  background: var(--surface-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
