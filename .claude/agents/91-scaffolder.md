@@ -21,9 +21,8 @@ Create consistent boilerplate so implementation starts from a known-good structu
 ## Conventions
 
 Defer to these — don't restate them:
-- `AGENTS.md` / `CLAUDE.md` — top-level rules (modified Next.js: read `node_modules/next/dist/docs/01-app/` before scaffolding Next files)
-- `.claude/skills/architecture/` · `.claude/skills/typescript/` — structure & language
-- All output in **Australian English**
+- Modified Next.js — read `node_modules/next/dist/docs/01-app/` before scaffolding Next files.
+- `.claude/skills/layers/` · `.claude/skills/typescript/` — structure & language
 
 ## Responsibilities (staged)
 
