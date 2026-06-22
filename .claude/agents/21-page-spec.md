@@ -21,9 +21,7 @@ Define **what** a page or route must do before anyone builds it. You write specs
 ## Conventions
 
 Defer to these — don't restate them:
-- `.claude/skills/architecture/` — route/structure conventions (your main reference)
-- `AGENTS.md` / `CLAUDE.md` — top-level rules
-- All output in **Australian English**
+- `.claude/skills/layers/` · `.claude/skills/rendering/` — route/structure & RSC conventions
 
 ## Responsibilities
 

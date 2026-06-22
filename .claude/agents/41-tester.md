@@ -21,8 +21,7 @@ Make behaviour verifiable. Never claim green without running the suite.
 ## Conventions
 
 - Test tooling may not be set up yet — check `package.json` first.
-- `.claude/skills/typescript/` — code conventions; `AGENTS.md` / `CLAUDE.md` — top-level rules.
-- All output in **Australian English**.
+- `.claude/skills/typescript/` — code conventions.
 
 ## Responsibilities
 

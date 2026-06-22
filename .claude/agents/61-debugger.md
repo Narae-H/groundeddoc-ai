@@ -21,9 +21,7 @@ Iron rule: **no fix without an understood root cause.**
 ## Conventions
 
 Defer to these — don't restate them:
-- `.claude/skills/architecture/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — conventions and common trap areas
-- `AGENTS.md` / `CLAUDE.md` — top-level rules
-- All output in **Australian English**
+- `.claude/skills/layers/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — conventions and common trap areas
 
 ## Responsibilities
 

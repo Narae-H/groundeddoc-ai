@@ -21,7 +21,6 @@ Turn finished work into clean, well-scoped commits.
 ## Conventions
 
 - Commits follow `.github/COMMIT_CONVENTION.md`: `<type>(<scope>): <subject>`, types `feat fix docs refactor test chore`; subject imperative, lower-case, no full stop, under ~50 chars, core only.
-- `AGENTS.md` / `CLAUDE.md` — top-level rules; all output in **Australian English**.
 
 ## Responsibilities
 

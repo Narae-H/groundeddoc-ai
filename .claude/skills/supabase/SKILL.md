@@ -36,6 +36,6 @@ Isolation is **per-org**, via `org_id`, not per-user. When RLS is enabled the po
 ## Queries, storage & migrations
 
 - Index foreign keys and columns used in `where`/`order by`/joins (see the indexes in `schema.sql`).
-- Keep all Supabase access inside `lib/supabase` (see architecture skill); never query from client components; service-role key server-side only.
+- Keep all Supabase access inside `lib/supabase` (see the `layers` skill); never query from client components; service-role key server-side only.
 - Storage bucket policies must match the table policies once RLS is on.
 - Migration-first and additive where possible; keep `schema.sql` the source of truth.

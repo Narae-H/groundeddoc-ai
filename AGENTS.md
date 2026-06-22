@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Folder structure & conventions
 
-The codebase's folder layout, server/client split, import-direction rule, and component conventions are documented in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). Read it before adding routes, components, or modules.
+The codebase's folder layout, import-direction rule, and component conventions live in the [`layers`](.claude/skills/layers/SKILL.md) skill; the server/client split in [`rendering`](.claude/skills/rendering/SKILL.md). Read them before adding routes, components, or modules.
 
 # GitHub issues are the source of truth
 
@@ -22,3 +22,19 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow.
 # Tech-stack decisions are recorded as an ADR
 
 The tech-stack choices and their one-line rationale live in [docs/DECISIONS.md](docs/DECISIONS.md) — consult it before re-opening a settled decision (DB, AI SDK, RLS-off stance, input formats, non-streaming responses, the design pipeline). If a decision changes, record it there first.
+
+# Findings output format
+
+This format applies **only when a response reports findings** — a code or structure review, a "review this", an architecture critique, or a QA/security audit. It does **not** apply to ordinary questions, edits, explanations, or conversation; answer those normally.
+
+When you are reporting findings, group them by severity:
+
+- 🔴 must-fix
+- 🟡 should-fix
+- 🟢 nice-to-have
+
+Each finding gets a `file:line` and a concrete, actionable suggestion (for reviews, a refactor; for audits, a fix). If the work is sound, say so plainly instead of inventing findings.
+
+# Output language
+
+Artifacts you produce — reviews, findings, summaries, docs, and commit/PR/issue text — are written in **Australian English**. Working drafts and chat may be in another language; the committed artifact is Australian English. (Code comments and identifiers: see the `typescript` skill.)

@@ -32,6 +32,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Dependency boundaries
+        run: npm run depcruise
+
       - name: Type check
         run: npx tsc --noEmit
 
