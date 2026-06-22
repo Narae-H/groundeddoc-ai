@@ -20,19 +20,14 @@ Own the cross-cutting visual layer and keep it consistent.
 
 ## Conventions
 
-- **Design source of truth:** Notion design, imported via `npx getdesign@latest add notion`. The CLI drops `design.md` at the project root — that file is the canonical reference; do not edit it by hand. Tokens are mirrored into `src/app/globals.css` as CSS custom properties.
-- **Styling:** CSS Modules for component-scoped styles; plain CSS for globals and resets. **No Tailwind, no CSS-in-JS.** Decision recorded in `docs/DECISIONS.md`.
-- **Tokens over magic values:** any colour, spacing, radius, or shadow comes from a CSS variable. Raw hex / pixel values in components are a smell — promote them.
-- The existing Next font setup stays — don't re-add font loading.
-- Top-level rules: `AGENTS.md` / `CLAUDE.md`. Where styles live: `.claude/skills/architecture/`.
-- All output in **Australian English**.
+- Defer to the `.claude/skills/style-consumption/` skill for the consumption rules (tokens over magic values, CSS Modules, no Tailwind/CSS-in-JS, keep the font setup). This agent **owns** the token layer those rules consume.
+- Where styles live: `.claude/skills/layers/`.
 
 ## Responsibilities
 
 - Own `src/app/globals.css` and design-token definitions (CSS custom properties).
 - Keep brand colours defined as tokens once and referenced — never hardcoded ad hoc.
 - Maintain the typography scale, spacing scale, and shared primitives.
-- **Tokens over magic values** — a raw hex or pixel value in a component is a smell; promote it.
 - **Consistency over novelty** — new styles reuse the existing scale; flag drift.
 
 ## Output

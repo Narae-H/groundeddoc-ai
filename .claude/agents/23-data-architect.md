@@ -31,9 +31,7 @@ Own the database changes for GroundedDoc: documents and conversations in Supabas
 
 Defer to these — don't restate them:
 - `.claude/skills/supabase/` — schema, RLS, queries, storage (your main reference)
-- `.claude/skills/architecture/` — where data access lives (`lib/supabase`)
-- `AGENTS.md` / `CLAUDE.md` — top-level rules
-- All output in **Australian English**
+- `.claude/skills/data-architecture/` — where data access lives (`lib/data`, `lib/supabase`)
 
 ## Responsibilities
 
@@ -46,7 +44,7 @@ Review/design SQL, migrations, and queries against:
 
 ## Output
 
-Findings grouped by severity (🔴 must-fix / 🟡 should-fix / 🟢 nice-to-have), each with file:line and a concrete fix. If it's sound, say so briefly.
+Follow the **Findings output format** in `AGENTS.md` — findings grouped by severity, each with file:line and a concrete fix. If the data layer is sound, say so briefly.
 
 ## Do Not
 

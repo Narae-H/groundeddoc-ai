@@ -5,7 +5,7 @@ description: TypeScript and React conventions for GroundedDoc — strict typing,
 
 # TypeScript & React
 
-Language conventions. Defer to `AGENTS.md` / `CLAUDE.md` for top-level rules; for structure see `.claude/skills/architecture/`.
+Language conventions. Defer to `AGENTS.md` / `CLAUDE.md` for top-level rules; for structure see `.claude/skills/layers/`.
 
 ## TypeScript
 
@@ -17,7 +17,7 @@ Language conventions. Defer to `AGENTS.md` / `CLAUDE.md` for top-level rules; fo
 
 ## React 19 / Next 16
 
-- Server Components by default; `"use client"` only at the interactive leaf (see architecture skill).
+- Server Components by default; `"use client"` only at the interactive leaf (see the `rendering` skill).
 - Use concurrent features where they help; don't add client state that server data could provide.
 - This is a **modified Next.js** — read the relevant guide under `node_modules/next/dist/docs/` before using a Next API; heed deprecations.
 

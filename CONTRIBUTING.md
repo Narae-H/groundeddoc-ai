@@ -44,5 +44,5 @@ The issue number in the branch name is what ties the branch, commits, and PR bac
 | Commit message format | [`.github/COMMIT_CONVENTION.md`](.github/COMMIT_CONVENTION.md) |
 | PR structure | [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) |
 | Issue structure | [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE) |
-| Architecture (layout, boundaries, import rules) | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — canonical; the `architecture` skill is a pointer into it |
-| Data & style conventions | `.claude/skills/` (e.g. `supabase`, `typescript`) and the `AGENTS.md` rules |
+| Architecture (layout, rendering, data flow, state, boundaries, guardrails) | the skills under `.claude/skills/` — `layers`, `rendering`, `data-architecture`, `state-ownership`, `module-boundaries`, `guardrails`, `error-handling` |
+| Data & style conventions | `.claude/skills/` (e.g. `supabase`, `typescript`, `style-consumption`) and the `AGENTS.md` rules |

@@ -21,10 +21,9 @@ Write the code that ships features. Smallest increments that compile.
 ## Conventions
 
 Defer to these — don't restate them:
-- `AGENTS.md` / `CLAUDE.md` — top-level rules (modified Next.js: read `node_modules/next/dist/docs/01-app/` before writing Next code)
-- `.claude/skills/architecture/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — structure, language, data layer
+- Modified Next.js — read `node_modules/next/dist/docs/01-app/` before writing Next code.
+- `.claude/skills/layers/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — structure, language, data layer
 - `.claude/skills/new-ai-route/` — when adding an AI endpoint
-- All output in **Australian English**
 
 ## Responsibilities
 

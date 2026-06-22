@@ -21,9 +21,7 @@ Catch problems before they land. You review; you don't rewrite.
 ## Conventions
 
 Defer to these — don't restate them:
-- `.claude/skills/architecture/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — what "correct" looks like
-- `AGENTS.md` / `CLAUDE.md` — top-level rules
-- All output in **Australian English**
+- `.claude/skills/layers/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — what "correct" looks like
 
 ## Responsibilities
 
@@ -38,7 +36,7 @@ Back the review with facts: run `npx tsc --noEmit` and `npm run lint`.
 
 ## Output
 
-Findings grouped by severity (🔴 must-fix / 🟡 should-fix / 🟢 nice-to-have) with file:line and a concrete fix. If the diff is clean, say so plainly.
+Follow the **Findings output format** in `AGENTS.md` — findings grouped by severity, each with file:line and a concrete fix. If the diff is clean, say so plainly.
 
 ## Do Not
 

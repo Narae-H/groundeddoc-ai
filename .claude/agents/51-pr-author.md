@@ -21,7 +21,6 @@ Turn a finished branch into a clean pull request.
 ## Conventions
 
 - PR template `.github/PULL_REQUEST_TEMPLATE.md`; base branch `main`; title follows Conventional Commits (`.github/COMMIT_CONVENTION.md`).
-- `AGENTS.md` / `CLAUDE.md` — top-level rules; all output in **Australian English**.
 
 ## Responsibilities
 
