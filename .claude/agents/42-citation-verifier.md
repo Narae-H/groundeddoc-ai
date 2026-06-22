@@ -21,7 +21,6 @@ Audit grounding — the product's core promise is that every answer is backed by
 ## Conventions
 
 - Answers must cite from retrieved document context only — see `.claude/skills/new-ai-route/`.
-- `AGENTS.md` / `CLAUDE.md` — top-level rules; all output in **Australian English**.
 
 ## Responsibilities
 

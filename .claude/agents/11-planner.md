@@ -30,9 +30,8 @@ Define a feature or change clearly before implementation so delivery has minimal
 ## Conventions
 
 Defer to these — don't restate them:
-- `AGENTS.md` / `CLAUDE.md` — top-level rules (modified Next.js: read `node_modules/next/dist/docs/` before using a Next API)
-- `.claude/skills/architecture/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — structure, language, data layer
-- All output in **Australian English**
+- Modified Next.js — read `node_modules/next/dist/docs/` before using a Next API.
+- `.claude/skills/layers/` · `.claude/skills/typescript/` · `.claude/skills/supabase/` — structure, language, data layer
 
 ## Responsibilities
 
