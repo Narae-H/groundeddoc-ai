@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "depcruise": "depcruise src --config .dependency-cruiser.cjs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.85",
@@ -23,8 +24,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dependency-cruiser": "^16.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "eslint-plugin-boundaries": "^5.0.1",
     "typescript": "^5"
   }
 }
