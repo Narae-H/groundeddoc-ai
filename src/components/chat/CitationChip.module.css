@@ -1,0 +1,35 @@
+.chip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+  background: var(--canvas-soft);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.title {
+  color: var(--text-heading);
+  font-size: var(--caption-size);
+  font-weight: var(--eyebrow-weight);
+}
+
+.locator {
+  color: var(--text-link);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--eyebrow-weight);
+  letter-spacing: var(--eyebrow-tracking);
+}
+
+.quote {
+  color: var(--text-body);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-leading);
+}

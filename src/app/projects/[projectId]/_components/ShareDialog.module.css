@@ -1,0 +1,239 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-modal);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: var(--surface-card);
+  width: 440px;
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated);
+  display: flex;
+  flex-direction: column;
+  max-height: 90%;
+  animation: gd-rise 0.24s ease-out;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-md) 18px 13px;
+  border-bottom: 1px solid var(--hairline);
+  flex-shrink: 0;
+}
+
+.headingText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink-95);
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.close {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-faint);
+  display: flex;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--space-md) 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+}
+
+.inviteRow {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.inviteInput {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius-md);
+  padding: 9px var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: var(--caption-size);
+  color: var(--ink-95);
+  outline: none;
+}
+
+.inviteInput::placeholder {
+  color: var(--text-faint);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-95);
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.memberAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-primary);
+  font-weight: 600;
+  font-size: var(--caption-size);
+  background: var(--sticker-sky);
+}
+
+.memberText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.35;
+}
+
+.memberName {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.memberEmail {
+  font-size: var(--eyebrow-size);
+  color: var(--text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.memberRole {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.linkCard {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.linkRow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--accent);
+}
+
+.linkText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.linkTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-95);
+}
+
+.linkMeta {
+  font-size: var(--eyebrow-size);
+  color: var(--text-faint);
+}
+
+.switch {
+  width: 38px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--field-border);
+  cursor: pointer;
+  padding: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s ease;
+}
+
+.switchOn {
+  background: var(--accent);
+  justify-content: flex-end;
+}
+
+.switchKnob {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.linkActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 13px 18px var(--space-md);
+  border-top: 1px solid var(--hairline);
+  flex-shrink: 0;
+}

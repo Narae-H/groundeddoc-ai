@@ -1,0 +1,17 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: var(--space-lg);
+}
+
+.link {
+  color: var(--text-link);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-leading);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
