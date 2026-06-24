@@ -1,0 +1,63 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
+  line-height: var(--button-leading);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* The single blue action — pill-shaped marketing CTA. */
+.primary {
+  background: var(--accent);
+  color: var(--on-primary);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs) var(--space-lg);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--accent-active);
+}
+
+/* White pill with the soft shadow. */
+.secondary {
+  background: var(--surface-card);
+  color: var(--ink);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs) var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Tighter nav/utility button with a hairline border. */
+.utility {
+  background: var(--surface-card);
+  color: var(--ink);
+  border-color: var(--hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) var(--space-md);
+}
+
+.utility:hover:not(:disabled) {
+  background: var(--canvas-soft);
+}
+
+/* Compact size — tighter padding and the smaller caption type. */
+.sm {
+  gap: var(--space-xxs);
+  font-size: var(--caption-size);
+  padding: var(--space-xxs) var(--space-sm);
+}
