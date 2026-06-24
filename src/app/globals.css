@@ -13,7 +13,27 @@
   /* ─── Brand & structural accent (the ONLY colour that paints an action) ─── */
   --blue: #0075de;            /* Notion Blue — primary CTA, links, focus */
   --blue-active: #005bab;     /* Pressed blue */
+  /* Brand-blue wash — the soft selected/hover surface and matching border drawn from
+     the accent (chips, dropzones, selected rows, role chip). The cited-passage tint
+     stays separate (--cited-tint) so "selected" and "cited" never blur together. */
+  --accent-wash: rgba(0, 117, 222, 0.06);
+  --accent-wash-border: rgba(0, 117, 222, 0.18);
   --indigo: #213183;          /* Deep indigo — the dark "night" hero band */
+  --brand-eyebrow: #9fb0e6;   /* light indigo — eyebrow on the brand band */
+  --brand-lead: #c5cdf0;      /* light indigo — lead copy on the brand band */
+  --brand-copyright: #8593c9; /* muted indigo — copyright on the brand band */
+
+  /* ─── Brand mark (Logo / favicon.svg — the document on the blue tile) ─── */
+  --logo-paper: #ffffff;       /* the white document & base bar */
+  --logo-fold: #bcd9f7;        /* folded-corner tint */
+  --logo-line-strong: #9cc4ef; /* upper ruled line */
+  --logo-line-soft: #cfe4fb;   /* lower ruled line */
+
+  /* ─── Microsoft sign-in mark (fixed external brand colours) ─── */
+  --ms-red: #f25022;
+  --ms-green: #7fba00;
+  --ms-blue: #00a4ef;
+  --ms-yellow: #ffb900;
 
   /* ─── Decorative sticker palette (illustrations & dots only, never CTAs) ─── */
   --sticker-sky: #62aef0;
@@ -25,21 +45,69 @@
   --sticker-teal: #2a9d99;
   --sticker-green: #1aae39;
   --sticker-brown: #523410;
+  --sticker-teal-deep: #1f7572;  /* readable teal foreground on a teal tint */
+  --sticker-pink-deep: #c0398f;  /* readable pink foreground on a pink tint */
+  --sticker-gold: #efa400;     /* starred-favourite star fill */
+  --star-empty: #d2cec9;       /* unstarred outline */
+  --blue-muted: #5f86b0;       /* muted blue label (access tier on role chip) */
+  /* Sticker tint surfaces — soft fills behind the *-deep foregrounds (prompt-card
+     icons). Paired with --positive-tint / --positive for the green case. */
+  --sticker-orange-tint: rgba(221, 91, 0, 0.12);
+  --sticker-teal-tint: rgba(42, 157, 153, 0.14);
+  --sticker-pink-tint: rgba(255, 100, 200, 0.14);
 
   /* ─── Surface ─── */
   --canvas: #ffffff;          /* pure white — cards, fields, nav */
   --canvas-soft: #f6f5f4;     /* warm paper — the signature page canvas */
+  --canvas-dim: #faf9f8;      /* faintly dimmed white — left rail, preview body */
+  --canvas-shell: #e9e7e4;    /* warm shell behind the app frame */
   --surface: #ffffff;
   --hairline: #e6e6e6;        /* 1px borders & dividers */
+  --hairline-soft: #eceae8;   /* fainter inner divider (menus, table rows) */
+  --hairline-faint: #efedea;  /* faintest divider (hover rows, table cells) */
   --field-border: #dddddd;    /* input border */
+  --field-border-soft: #cfcbc6; /* softened control border (radio, dropzone) */
+  --scrollbar-thumb: #d8d6d3; /* custom scrollbar thumb */
+  --scrollbar-thumb-hover: #c2bfbb;
+  --surface-hover: rgba(0, 0, 0, 0.04); /* neutral black-alpha hover (menu rows, lists) */
+  --surface-muted: rgba(0, 0, 0, 0.05); /* neutral black-alpha fill (denied-permission chip) */
 
   /* ─── Ink (text) ─── */
   --ink: #000000;             /* headings & body (render ~95% alpha) */
   --ink-95: rgba(0, 0, 0, 0.95);
+  --ink-deep: #211f1d;        /* near-black — toast surface, modal scrims */
+  --scrim: rgba(33, 31, 29, 0.34); /* drawer/menu scrim (the ink-deep at 34%) */
+  --scrim-modal: rgba(33, 31, 29, 0.4); /* modal scrim (slightly heavier) */
   --ink-secondary: #31302e;   /* secondary body, footer */
   --ink-muted: #615d59;       /* supporting / muted */
   --ink-faint: #a39e98;       /* captions, metadata, placeholder */
+  --ink-disabled: #cdc9c4;    /* disabled control fill (inert send button) */
+  --ink-dot: #bdb9b3;         /* neutral bullet / dot grey */
   --on-primary: #ffffff;      /* text on blue / indigo */
+
+  /* ─── Restricted / confidential warning (managers-only locks & notes) ───
+     Intentional hue split (matches the GroundedDoc design): the warning *ink*
+     (--warn / --warn-ink) is a deeper burnt orange, while the *tints* are derived
+     from --sticker-orange (#dd5b00, rgb 221 91 0), a brighter orange. Ink and
+     surface are deliberately different hues — not a bug. */
+  --warn: #c2540a;            /* warning ink — restricted locks, confidential notes */
+  --warn-ink: #8a4a16;        /* warning body copy */
+  --warn-tint: rgba(221, 91, 0, 0.08);  /* warning surface (sticker-orange based) */
+  --warn-tint-strong: rgba(221, 91, 0, 0.13);  /* warning chip surface (sticker-orange based) */
+
+  /* ─── Positive / verified (grounded ticks) ─── */
+  --positive: #168a2f;       /* positive ink — allowed permissions, verified ticks */
+  --positive-tint: rgba(26, 174, 57, 0.13);
+
+  /* ─── Danger (destructive remove) ─── */
+  --danger: #d6493f;
+  --danger-tint: rgba(214, 73, 63, 0.08);
+
+  /* ─── Cited-passage tint (highlighted source text on a blue wash) ─── */
+  --cited-ink: #1d3a57;          /* ink for the highlighted cited passage */
+  --info-ink: #3a5a78;           /* muted blue-grey body on a blue info note */
+  --cited-tint: rgba(0, 117, 222, 0.07);
+  --image-well-stop: #e6e4e1;    /* warm stop for the image-preview gradient */
 
   /* ─── Semantic aliases ─── */
   --text-heading: var(--ink-95);
@@ -135,4 +203,59 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* ============================================================================
+   Workspace motion & scrollbar (from the GroundedDoc design)
+   ============================================================================ */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: content-box;
+}
+
+@keyframes gd-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes gd-toast {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes gd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
