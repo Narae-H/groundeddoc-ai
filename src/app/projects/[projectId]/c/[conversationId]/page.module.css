@@ -1,0 +1,32 @@
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  color: var(--text-link);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-leading);
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.title {
+  color: var(--text-heading);
+  font-size: var(--heading-2-size);
+  font-weight: var(--heading-2-weight);
+  line-height: var(--heading-2-leading);
+  letter-spacing: var(--heading-2-tracking);
+}

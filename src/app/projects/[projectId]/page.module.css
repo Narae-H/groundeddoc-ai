@@ -1,0 +1,11 @@
+/**
+ * The workspace fills the viewport edge-to-edge — it is a full-bleed route (outside
+ * the portal chrome group), so the GroundedDoc app shell (its own topbar, document
+ * rail, thread and panels) owns the whole screen. The fixed height anchors the
+ * internal scroll regions and the absolutely-positioned panels/modals.
+ */
+.screen {
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--surface-card);
+}
