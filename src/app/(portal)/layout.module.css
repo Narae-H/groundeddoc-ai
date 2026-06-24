@@ -1,0 +1,17 @@
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-xxl) var(--space-lg);
+}
+
+.footer {
+  background: var(--canvas-soft);
+  border-top: 1px solid var(--hairline);
+  color: var(--text-body);
+  font-size: var(--caption-size);
+  line-height: var(--caption-leading);
+  text-align: center;
+  padding: var(--space-lg);
+}
