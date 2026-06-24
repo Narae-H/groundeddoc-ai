@@ -1,0 +1,12 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+.label {
+  color: var(--text-faint);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-leading);
+}

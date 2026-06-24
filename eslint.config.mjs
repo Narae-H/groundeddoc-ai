@@ -6,15 +6,19 @@ import boundaries from "eslint-plugin-boundaries";
 // Layer elements, most-specific first (boundaries matches the first hit).
 // Mirrors the one-way import rule in the `layers` skill and the
 // barrel rule in .claude/skills/module-boundaries/.
+// Folder mode (the default): each pattern names the element's *folder*; all files
+// under it form one element, so intra-module imports (a sibling file or its CSS
+// module) are internal and skipped by the boundaries rules. The `domain` capture
+// keeps each `components/<domain>` a distinct element for cross-module rules.
 const elements = [
-  { type: "ui", pattern: "src/components/ui/**" },
-  { type: "domain", pattern: "src/components/*/**" },
-  { type: "app", pattern: "src/app/**" },
-  { type: "lib-data", pattern: "src/lib/data/**" },
-  { type: "lib-ai", pattern: "src/lib/ai/**" },
-  { type: "lib-supabase", pattern: "src/lib/supabase/**" },
+  { type: "ui", pattern: "src/components/ui" },
+  { type: "domain", pattern: "src/components/*", capture: ["domain"] },
+  { type: "app", pattern: "src/app" },
+  { type: "lib-data", pattern: "src/lib/data" },
+  { type: "lib-ai", pattern: "src/lib/ai" },
+  { type: "lib-supabase", pattern: "src/lib/supabase" },
   { type: "lib-shared", pattern: "src/lib/*" },
-  { type: "types", pattern: "src/types/**" },
+  { type: "types", pattern: "src/types" },
 ];
 
 const eslintConfig = defineConfig([
