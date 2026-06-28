@@ -3,7 +3,7 @@
  * portal chrome group), so the indigo brand band and the white sign-in panel sit
  * side by side across the whole screen, with no surrounding card.
  */
-.screen {
+.frame {
   height: 100dvh;
   overflow: hidden;
 }
@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 768px) {
-  .screen {
+  .frame {
     height: auto;
     min-height: 100dvh;
   }

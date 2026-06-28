@@ -49,7 +49,6 @@
   padding: var(--space-sm) var(--space-md);
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-sans);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 

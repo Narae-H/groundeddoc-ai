@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  font-family: var(--font-sans);
   font-size: var(--button-size);
   font-weight: var(--button-weight);
   line-height: var(--button-leading);
