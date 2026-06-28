@@ -28,7 +28,6 @@
   border-radius: var(--radius-md);
   padding: var(--space-sm);
   cursor: pointer;
-  font-family: var(--font-sans);
   font-size: var(--caption-size);
   font-weight: 600;
   color: var(--ink-95);
@@ -139,7 +138,6 @@
   padding: 11px 13px;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-sans);
   color: var(--ink-dot);
 }
 

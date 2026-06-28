@@ -62,7 +62,6 @@
   border: 1px solid var(--field-border);
   border-radius: var(--radius-md);
   padding: 10px var(--space-sm);
-  font-family: var(--font-sans);
   font-size: var(--caption-size);
   color: var(--ink-95);
   outline: none;

@@ -26,7 +26,6 @@
   cursor: pointer;
   text-align: left;
   padding: var(--space-sm) 6px var(--space-sm) 15px;
-  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
   color: var(--text-muted);
@@ -84,7 +83,6 @@
   border: none;
   outline: none;
   background: none;
-  font-family: var(--font-sans);
   font-size: var(--caption-size);
   color: var(--ink-95);
   width: 100%;
