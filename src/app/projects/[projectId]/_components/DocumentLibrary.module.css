@@ -6,6 +6,15 @@
   flex-shrink: 0;
   background: var(--canvas-dim);
   border-right: 1px solid var(--hairline);
+  transition: width 0.2s ease;
+}
+
+/* Desktop inline collapse — the rail shrinks to nothing, no unmount. */
+.railCollapsed {
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-right: none;
 }
 
 .topRow {
@@ -33,6 +42,26 @@
 }
 
 .back:hover {
+  background: var(--canvas-soft);
+  color: var(--ink-secondary);
+}
+
+.collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 9px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-faint);
+  border-radius: var(--radius-sm);
+}
+
+.collapse:hover {
   background: var(--canvas-soft);
   color: var(--ink-secondary);
 }
@@ -225,4 +254,35 @@
   background: var(--warn-tint-strong);
   color: var(--warn);
   flex-shrink: 0;
+}
+
+/* ── Mobile: off-canvas drawer ───────────────────────────────────────────────
+   The rail slides in over the chat column instead of collapsing inline. The
+   desktop collapse flag is neutralised here; the drawer is driven by the open
+   class. The in-panel collapse control is hidden (design: showCollapseBtn:
+   !isMobile) — the hamburger opens the drawer, the scrim closes it. */
+@media (max-width: 768px) {
+  .rail,
+  .railCollapsed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 290px;
+    min-width: 0;
+    overflow: visible;
+    z-index: 40;
+    border-right: 1px solid var(--hairline);
+    box-shadow: var(--shadow-elevated);
+    transform: translateX(-110%);
+    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .railDrawerOpen {
+    transform: translateX(0);
+  }
+
+  .collapse {
+    display: none;
+  }
 }

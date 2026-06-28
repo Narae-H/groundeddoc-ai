@@ -290,3 +290,18 @@
   border-top: 1px solid var(--hairline);
   flex-shrink: 0;
 }
+
+/* ── Mobile: bottom sheet ────────────────────────────────────────────────────
+   The modal docks to the bottom edge and spans the full width. */
+@media (max-width: 768px) {
+  .overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .card {
+    width: 100%;
+    max-height: 92%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+}
