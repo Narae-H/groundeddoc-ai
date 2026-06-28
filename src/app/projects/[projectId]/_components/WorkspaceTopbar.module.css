@@ -29,7 +29,7 @@
   min-width: 0;
 }
 
-.menuBtn {
+.iconBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,6 +42,30 @@
   flex-shrink: 0;
   padding: 0;
   color: var(--ink-secondary);
+}
+
+.iconBtn:hover {
+  background: var(--canvas-soft);
+}
+
+/* Hamburger toggles the documents panel — mobile only. */
+.menuBtn {
+  display: none;
+}
+
+/* Panel-icon expand lives in the top bar on desktop, shown only when collapsed. */
+.expandBtn {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .menuBtn {
+    display: flex;
+  }
+
+  .expandBtn {
+    display: none;
+  }
 }
 
 .projectTrigger {
@@ -534,14 +558,62 @@
   line-height: 1.45;
 }
 
+/* Share moves into the account menu on mobile; hidden in the desktop menu. */
+.accountShareRow {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .actionLabel {
     display: none;
   }
 
-  .actionBtn,
-  .shareBtn {
+  /* Chats becomes icon-only; Share leaves the top bar (it moves to the account
+     menu). No top-bar header divider exists in this markup, so there is nothing
+     to hide for the design's !isMobile divider. */
+  .actionBtn {
     width: 36px;
     padding: 0;
+  }
+
+  .shareBtn {
+    display: none;
+  }
+
+  .accountShareRow {
+    display: flex;
+  }
+
+  /* The anchors go static so the menus attach to the .app frame (its positioning
+     context) and render as bottom sheets, not popovers off the trigger. */
+  .anchor {
+    position: static;
+  }
+
+  .scrim {
+    position: absolute;
+    background: var(--scrim);
+  }
+
+  .menu,
+  .historyMenu,
+  .userMenu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-elevated);
+    padding: 10px 8px 18px;
+    z-index: 70;
+    max-height: 74%;
+    overflow-y: auto;
+    animation: gd-rise 0.24s ease-out;
   }
 }

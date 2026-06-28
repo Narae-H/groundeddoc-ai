@@ -15,7 +15,12 @@ interface WorkspaceTopbarProps {
   user: WorkspaceUser;
   switcherProjects: SwitcherProject[];
   historyGroups: ChatHistoryGroup[];
+  leftCollapsed: boolean;
+  /** Whether the mobile documents drawer is open (drives the hamburger's aria-expanded). */
+  drawerOpen: boolean;
   onToggleLeftPanel: () => void;
+  /** Opens/closes the mobile documents drawer (the hamburger, ≤768px). */
+  onToggleDrawer: () => void;
   onSelectProject: (publicId: string) => void;
   onNewProject: () => void;
   onNewChat: () => void;
@@ -36,7 +41,10 @@ export function WorkspaceTopbar({
   user,
   switcherProjects,
   historyGroups,
+  leftCollapsed,
+  drawerOpen,
   onToggleLeftPanel,
+  onToggleDrawer,
   onSelectProject,
   onNewProject,
   onNewChat,
@@ -68,15 +76,34 @@ export function WorkspaceTopbar({
       <div className={styles.left}>
         <button
           type="button"
-          className={styles.menuBtn}
-          onClick={onToggleLeftPanel}
+          className={`${styles.iconBtn} ${styles.menuBtn}`}
+          onClick={onToggleDrawer}
           title="Toggle documents"
           aria-label="Toggle documents panel"
+          aria-expanded={drawerOpen}
+          aria-controls="documents-panel"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M4 6.5h16M4 12h16M4 17.5h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
         </button>
+
+        {leftCollapsed ? (
+          <button
+            type="button"
+            className={`${styles.iconBtn} ${styles.expandBtn}`}
+            onClick={onToggleLeftPanel}
+            title="Show documents"
+            aria-label="Show documents panel"
+            aria-expanded={!leftCollapsed}
+            aria-controls="documents-panel"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.8" />
+              <path d="M9 4v16" stroke="currentColor" strokeWidth="1.8" />
+            </svg>
+          </button>
+        ) : null}
 
         <div className={styles.anchor}>
           <button
@@ -335,6 +362,23 @@ export function WorkspaceTopbar({
                   <span>{user.confidentialNote}</span>
                 </div>
                 <div className={styles.divider} />
+                {/* Share lives in the account menu on mobile (the top-bar Share
+                    button is hidden ≤768px); on desktop this row stays hidden. */}
+                <button
+                  type="button"
+                  className={`${styles.menuRow} ${styles.accountShareRow}`}
+                  onClick={() => {
+                    close();
+                    onShare();
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="8" cy="7.5" r="3" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M2.6 18v-1A3.8 3.8 0 0 1 6.4 13.2h3.2A3.8 3.8 0 0 1 13.4 17v1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                    <path d="M18 8v5M20.5 10.5h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                  Share project
+                </button>
                 <button
                   type="button"
                   className={styles.menuRow}

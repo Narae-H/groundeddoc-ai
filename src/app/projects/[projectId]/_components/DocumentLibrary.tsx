@@ -14,8 +14,13 @@ interface DocumentLibraryProps {
   /** Set of scoped document ids. */
   scope: ReadonlySet<string>;
   canManageDocs: boolean;
+  /** Desktop inline collapse (CSS width:0). Ignored ≤768px. */
+  collapsed: boolean;
+  /** Mobile off-canvas drawer is open. Drives the ≤768px slide-in. */
+  drawerOpen: boolean;
   onToggleScope: (documentId: string) => void;
   onOpenDocument: (documentId: string) => void;
+  onCollapse: () => void;
   onUpload: () => void;
   onBackToPortal: () => void;
 }
@@ -40,8 +45,11 @@ export function DocumentLibrary({
   hiddenByRole,
   scope,
   canManageDocs,
+  collapsed,
+  drawerOpen,
   onToggleScope,
   onOpenDocument,
+  onCollapse,
   onUpload,
   onBackToPortal,
 }: DocumentLibraryProps) {
@@ -60,7 +68,10 @@ export function DocumentLibrary({
   const hasScope = scope.size > 0;
 
   return (
-    <div className={styles.rail}>
+    <div
+      id="documents-panel"
+      className={`${styles.rail} ${collapsed ? styles.railCollapsed : ""} ${drawerOpen ? styles.railDrawerOpen : ""}`}
+    >
       <div className={styles.topRow}>
         <button
           type="button"
@@ -78,6 +89,20 @@ export function DocumentLibrary({
             />
           </svg>
           Back to portal
+        </button>
+        <button
+          type="button"
+          className={styles.collapse}
+          onClick={onCollapse}
+          title="Collapse panel"
+          aria-label="Collapse documents panel"
+          aria-expanded={!collapsed}
+          aria-controls="documents-panel"
+        >
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M9 4v16" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
         </button>
       </div>
 

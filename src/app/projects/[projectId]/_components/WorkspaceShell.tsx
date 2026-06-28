@@ -38,6 +38,10 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
     data.initialPreview,
   );
   const [leftCollapsed, setLeftCollapsed] = useState(false);
+  // Mobile-only off-canvas state for the documents rail, kept distinct from the
+  // desktop inline collapse. The hamburger toggles this; ≤768px CSS turns the
+  // rail into a sliding drawer driven by it.
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<ActiveModal>(null);
   const [toast, setToast] = useState<string | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -67,6 +71,7 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
   const openSource = useCallback(
     (source: AnswerSource) => {
       const existing = previewByDocument.get(source.documentId);
+      setDrawerOpen(false); // the preview sheet and the mobile drawer never co-exist
       setPreview(
         existing ??
           buildFallbackPreview({
@@ -88,6 +93,7 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
       );
       const document = group?.documents.find((item) => item.id === documentId);
       const isImage = document?.kind === "IMG";
+      setDrawerOpen(false); // selecting a document closes the mobile drawer
       setPreview(
         existing ??
           buildFallbackPreview({
@@ -119,8 +125,17 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
         user={data.user}
         switcherProjects={data.switcherProjects}
         historyGroups={data.historyGroups}
+        leftCollapsed={leftCollapsed}
+        drawerOpen={drawerOpen}
         onToggleLeftPanel={() => setLeftCollapsed((collapsed) => !collapsed)}
-        onSelectProject={(publicId) => router.push(`/projects/${publicId}`)}
+        onToggleDrawer={() => {
+          setPreview(null); // opening the drawer dismisses the preview sheet
+          setDrawerOpen((open) => !open);
+        }}
+        onSelectProject={(publicId) => {
+          setDrawerOpen(false);
+          router.push(`/projects/${publicId}`);
+        }}
         onNewProject={() => setActiveModal("createProject")}
         // TODO(P4): start a fresh conversation route.
         onNewChat={() => flashToast("New chat is wired in P4")}
@@ -130,20 +145,30 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
       />
 
       <div className={styles.row}>
-        {!leftCollapsed ? (
-          <DocumentLibrary
-            groups={data.documentGroups}
-            documentCount={data.documentCount}
-            hiddenByRole={data.hiddenByRole}
-            scope={scope}
-            canManageDocs={data.user.canManageDocs}
-            onToggleScope={toggleScope}
-            onOpenDocument={openDocument}
-            onUpload={() => setActiveModal("upload")}
-            // TODO(P4): navigate back to the portal.
-            onBackToPortal={() => router.push("/")}
-          />
+        {/* The rail stays mounted so ≤768px can slide it as a drawer; desktop
+            collapse is CSS width:0 via the `collapsed` flag. */}
+        {drawerOpen ? (
+          <div className={styles.railScrim} onClick={() => setDrawerOpen(false)} />
         ) : null}
+
+        <DocumentLibrary
+          groups={data.documentGroups}
+          documentCount={data.documentCount}
+          hiddenByRole={data.hiddenByRole}
+          scope={scope}
+          canManageDocs={data.user.canManageDocs}
+          collapsed={leftCollapsed}
+          drawerOpen={drawerOpen}
+          onToggleScope={toggleScope}
+          onOpenDocument={openDocument}
+          onCollapse={() => setLeftCollapsed(true)}
+          onUpload={() => setActiveModal("upload")}
+          // TODO(P4): navigate back to the portal.
+          onBackToPortal={() => {
+            setDrawerOpen(false);
+            router.push("/");
+          }}
+        />
 
         <div className={styles.chatColumn}>
           <div className={styles.thread}>
@@ -178,6 +203,13 @@ export function WorkspaceShell({ data }: WorkspaceShellProps) {
             />
           </div>
         </div>
+
+        {preview ? (
+          <div
+            className={styles.previewScrim}
+            onClick={() => setPreview(null)}
+          />
+        ) : null}
 
         {preview ? (
           <SourcePreviewPanel
