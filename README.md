@@ -12,7 +12,7 @@
 
 A mini app for the construction industry: upload a construction document (EBA, subcontract, or award), and the AI reads it and answers your questions in plain English — every answer backed by a citation to the source text. Think of it as an "AI Construction Expert" you can talk to about your own paperwork.
 
-**[🚀 Live demo →](https://example.com)** <!-- TODO: replace with the deployed Vercel URL -->
+**[🚀 Live demo →](https://groundeddoc-ai.vercel.app/login)**
 
 ## 📸 Screenshots
 
