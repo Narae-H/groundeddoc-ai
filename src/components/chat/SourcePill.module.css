@@ -7,7 +7,6 @@
   border-radius: var(--radius-full);
   padding: var(--space-xxs) var(--space-sm);
   cursor: pointer;
-  font-family: var(--font-sans);
   font-size: var(--eyebrow-size);
   font-weight: var(--eyebrow-weight);
   color: var(--text-link);

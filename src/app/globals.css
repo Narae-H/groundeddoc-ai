@@ -179,6 +179,15 @@
   margin: 0;
 }
 
+/* Form controls don't inherit font by default (UA forces a system font) — opt them
+   back into the document's Inter so buttons/inputs match the rest of the UI. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
 html {
   height: 100%;
 }

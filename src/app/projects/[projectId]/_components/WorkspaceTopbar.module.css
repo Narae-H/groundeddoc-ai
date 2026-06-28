@@ -96,7 +96,6 @@
   background: var(--surface-card);
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-family: var(--font-sans);
   font-weight: 500;
   font-size: var(--caption-size);
   color: var(--ink-95);
@@ -123,7 +122,6 @@
   background: var(--surface-card);
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-family: var(--font-sans);
   font-weight: 500;
   font-size: var(--caption-size);
   color: var(--ink-95);
@@ -151,7 +149,6 @@
   background: var(--sticker-sky);
   border: none;
   cursor: pointer;
-  font-family: var(--font-sans);
 }
 
 /* ── Menus ───────────────────────────────────────────────────────────────── */
@@ -197,7 +194,6 @@
   background: none;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 500;
   color: var(--ink-secondary);
@@ -278,7 +274,6 @@
   border-radius: var(--radius-md);
   padding: 10px var(--space-sm);
   cursor: pointer;
-  font-family: var(--font-sans);
   font-size: 13.5px;
   font-weight: 600;
 }
@@ -306,7 +301,6 @@
   border: none;
   outline: none;
   background: none;
-  font-family: var(--font-sans);
   font-size: 13px;
   color: var(--ink-95);
   width: 100%;
